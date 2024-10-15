@@ -1,6 +1,6 @@
 <?php
 
-Route::post('/mall/webhooks/stripe', function () {
+Route::post('/mall/webhooks/stripe-checkout', function () {
     $payload = @file_get_contents('php://input');
     $header = request()->header('Stripe-Signature');
     $event = null;
