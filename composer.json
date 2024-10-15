@@ -5,5 +5,8 @@
     "require": {
         "composer/installers": "~1.0",
         "stripe/stripe-php": "^v16.1.0"
+    },
+    "extra": {
+        "installer-name": "mallstripecheckout"
     }
 }

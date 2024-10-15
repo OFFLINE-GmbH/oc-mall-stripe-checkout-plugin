@@ -2,7 +2,6 @@
 
 namespace OFFLINE\MallStripeCheckout;
 
-use OFFLINE\Mall\Classes\Payments\DefaultPaymentGateway;
 use OFFLINE\Mall\Classes\Payments\PaymentGateway;
 use OFFLINE\MallStripeCheckout\classes\StripeCheckout;
 use System\Classes\PluginBase;
@@ -36,12 +35,8 @@ class Plugin extends PluginBase
      */
     public function register()
     {
-        $this->app->singleton(PaymentGateway::class, function () {
-            $gateway = new DefaultPaymentGateway();
-            $gateway->registerProvider(new StripeCheckout());
-
-            return $gateway;
-        });
+        $gateway = $this->app->get(PaymentGateway::class);
+        $gateway->registerProvider(new StripeCheckout());
     }
 
     /**
